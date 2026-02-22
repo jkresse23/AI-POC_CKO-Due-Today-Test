@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI POC: CKO Due Today Test — Variation Mockups</title>
+  <style>
+    /* ==============================
+       ZIP DESIGN TOKENS
+    ============================== */
+    :root {
+      --confidence: #1A0826;
+      --grey200: #F4F4F4;
+      --grey300: #ECEBE9;
+      --grey400: #E2E1DF;
+      --grey500: #C6C3C5;
+      --grey600: #8C858E;
+      --grey700: #786E7A;
+      --grey800: #544A5A;
+      --grey900: #35293D;
+      --fearlessness-lightest: #EDE6FF;
+      --fearlessness-lighter: #DBCCFF;
+      --fearlessness-light: #C9B3FF;
+      --fearlessness: #AA8FFF;
+      --fearlessness-tint: #7C5EC8;
+      --fearlessness-medium: #6542BE;
+      --fearlessness-dark: #472E85;
+      --vfi-banner-bg: #f2ffc9;
+      --success: #1F7A39;
+      --white: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      background: #F0EFF0;
+      color: var(--confidence);
+      padding: 0;
+    }
+
+    /* ==============================
+       STICKY NAV
+    ============================== */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid var(--grey400);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--fearlessness-medium);
+      letter-spacing: -0.5px;
+      margin-right: 16px;
+    }
+
+    .sticky-nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--grey700);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .sticky-nav a:hover {
+      background: var(--fearlessness-lightest);
+      color: var(--fearlessness-medium);
+    }
+
+    .nav-sep {
+      color: var(--grey400);
+      margin: 0 4px;
+    }
+
+    /* ==============================
+       PAGE LAYOUT
+    ============================== */
+    .page-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 48px 40px 80px;
+    }
+
+    .page-header {
+      margin-bottom: 48px;
+    }
+
+    .page-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--confidence);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+      font-size: 15px;
+      color: var(--grey700);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    .page-meta {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      font-size: 12px;
+      color: var(--grey600);
+    }
+
+    .meta-item strong {
+      color: var(--grey900);
+      font-weight: 600;
+    }
+
+    /* ==============================
+       SECTION LAYOUT
+    ============================== */
+    .variation-section {
+      margin-bottom: 80px;
+    }
+
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--grey400);
+      margin: 64px 0;
+    }
+
+    .variation-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .variation-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--fearlessness-medium);
+      color: white;
+      font-size: 15px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .variation-badge.control {
+      background: var(--grey500);
+    }
+
+    .variation-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--confidence);
+      letter-spacing: -0.3px;
+    }
+
+    .variation-description {
+      font-size: 14px;
+      color: var(--grey700);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-left: 50px;
+      margin-bottom: 32px;
+    }
+
+    /* ==============================
+       TAGS
+    ============================== */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    .tag-purple { background: var(--fearlessness-lightest); color: var(--fearlessness-medium); }
+    .tag-grey   { background: var(--grey300); color: var(--grey700); }
+    .tag-green  { background: #E4F5EA; color: #1F7A39; }
+
+    /* ==============================
+       DEVICE FRAMES
+    ============================== */
+    .device-frames {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-left: 50px;
+    }
+
+    .device-frame {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .device-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--grey600);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .mobile-frame {
+      width: 390px;
+      background: #FAFAFA;
+      border-radius: 24px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.09), 0 0 0 1px rgba(0,0,0,0.04);
+    }
+
+    .desktop-frame {
+      width: 620px;
+      background: #FAFAFA;
+      border-radius: 16px;
+      padding: 28px 32px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.09), 0 0 0 1px rgba(0,0,0,0.04);
+    }
+
+    /* ==============================
+       ZIP CARD
+    ============================== */
+    .zip-card {
+      background: white;
+      border: 1px solid var(--grey400);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .zip-card-inner {
+      padding: 16px;
+    }
+
+    .accordion-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 16px;
+      border-top: 1px solid var(--grey400);
+      font-size: 13px;
+      color: var(--grey700);
+      background: white;
+      cursor: pointer;
+    }
+
+    .chevron { font-size: 10px; color: var(--grey500); }
+
+    /* ==============================
+       PLAN SELECTOR (radio list)
+    ============================== */
+    .plan-selector {
+      border: 1px solid var(--grey400);
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+      margin-bottom: 10px;
+    }
+
+    .plan-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-bottom: 0.5px solid var(--grey400);
+      background: white;
+      cursor: pointer;
+    }
+
+    .plan-option:last-child { border-bottom: none; }
+
+    .radio-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--grey500);
+      background: white;
+      flex-shrink: 0;
+    }
+
+    .radio-circle.selected {
+      background: var(--fearlessness-medium);
+      border-color: var(--fearlessness-medium);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 10.5l3.5 3.5 6-7' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 75%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .plan-text-primary {
+      font-size: 14px;
+      color: var(--confidence);
+      line-height: 1.4;
+    }
+
+    .plan-text-secondary {
+      font-size: 12px;
+      color: var(--grey600);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    /* ==============================
+       ANNOTATION
+    ============================== */
+    .annotation {
+      font-size: 12px;
+      color: var(--grey800);
+      background: #FFFBE6;
+      border-left: 3px solid #E8A800;
+      padding: 9px 12px;
+      border-radius: 0 6px 6px 0;
+      margin-top: 0;
+      line-height: 1.6;
+    }
+
+    /* ==============================
+       PROS / CONS
+    ============================== */
+    .pros-cons {
+      display: flex;
+      gap: 14px;
+      margin-top: 28px;
+      margin-left: 50px;
+      max-width: 680px;
+      flex-wrap: wrap;
+    }
+
+    .pros, .cons {
+      flex: 1;
+      min-width: 220px;
+      background: white;
+      border-radius: 10px;
+      padding: 14px 16px;
+      border: 1px solid var(--grey400);
+    }
+
+    .pros h4 { font-size: 11px; font-weight: 700; color: #1F7A39; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .cons h4 { font-size: 11px; font-weight: 700; color: var(--grey700); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .pros li, .cons li {
+      font-size: 13px;
+      color: var(--grey800);
+      list-style: none;
+      padding: 3px 0 3px 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .pros li::before { content: "✓"; position: absolute; left: 0; color: #1F7A39; font-weight: 700; }
+    .cons li::before { content: "–"; position: absolute; left: 0; color: var(--grey500); }
+
+    /* ==============================
+       CONTROL STYLES (current)
+    ============================== */
+    .ctrl-spotlight {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .ctrl-eyebrow {
+      font-size: 13px;
+      color: var(--grey700);
+      line-height: 1.4;
+    }
+
+    .ctrl-amount-row {
+      display: flex;
+      align-items: baseline;
+      margin-top: 6px;
+    }
+
+    .ctrl-dollar {
+      font-size: 16px;
+      color: var(--confidence);
+      margin-right: 2px;
+    }
+
+    .ctrl-number {
+      font-size: 28px;
+      color: var(--confidence);
+      line-height: 1;
+    }
+
+    .ctrl-cents {
+      font-size: 18px;
+    }
+
+    /* ==============================
+       VARIATION A — Subtle Label Swap
+    ============================== */
+    .va-spotlight {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .va-label {
+      font-size: 13px;
+      color: var(--grey700);
+    }
+
+    .va-amount-row {
+      display: flex;
+      align-items: baseline;
+      margin-top: 4px;
+    }
+
+    .va-dollar {
+      font-size: 16px;
+      color: var(--confidence);
+      margin-right: 2px;
+    }
+
+    .va-number {
+      font-size: 28px;
+      color: var(--confidence);
+      line-height: 1;
+    }
+
+    .va-secondary {
+      font-size: 12px;
+      color: var(--grey600);
+      margin-top: 7px;
+    }
+
+    /* ==============================
+       VARIATION B — Bold Hero
+    ============================== */
+    .vb-spotlight {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .vb-pill {
+      display: inline-flex;
+      align-items: center;
+      background: var(--fearlessness-lightest);
+      color: var(--fearlessness-medium);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .vb-amount-row {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .vb-dollar {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--fearlessness-medium);
+      margin-right: 2px;
+      line-height: 1;
+    }
+
+    .vb-number {
+      font-size: 44px;
+      font-weight: 600;
+      color: var(--fearlessness-medium);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .vb-cents {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .vb-secondary {
+      font-size: 13px;
+      color: var(--grey600);
+      margin-top: 8px;
+    }
+
+    /* Multi-plan Variation B */
+    .vb-plan-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-bottom: 0.5px solid var(--grey400);
+      background: white;
+    }
+
+    .vb-plan-option:last-child { border-bottom: none; }
+
+    .vb-plan-title {
+      font-size: 14px;
+      color: var(--confidence);
+      line-height: 1.4;
+    }
+
+    .vb-today-amount {
+      color: var(--fearlessness-medium);
+      font-weight: 700;
+    }
+
+    .vb-plan-subtitle {
+      font-size: 12px;
+      color: var(--grey600);
+      margin-top: 2px;
+    }
+
+    /* ==============================
+       VARIATION C — Split Panel
+    ============================== */
+    .vc-spotlight {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .vc-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vc-divider {
+      width: 1px;
+      background: var(--grey400);
+      margin: 0 18px;
+      align-self: stretch;
+      flex-shrink: 0;
+    }
+
+    .vc-panel-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--grey600);
+      margin-bottom: 5px;
+    }
+
+    .vc-amount-primary {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .vc-dollar-primary {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--fearlessness-medium);
+      margin-right: 1px;
+    }
+
+    .vc-number-primary {
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--fearlessness-medium);
+      line-height: 1;
+    }
+
+    .vc-cents-primary {
+      font-size: 18px;
+    }
+
+    .vc-sub-primary {
+      font-size: 11px;
+      color: var(--grey600);
+      margin-top: 5px;
+    }
+
+    .vc-amount-secondary {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .vc-dollar-secondary {
+      font-size: 13px;
+      color: var(--grey600);
+      margin-right: 1px;
+    }
+
+    .vc-number-secondary {
+      font-size: 22px;
+      color: var(--grey600);
+      line-height: 1;
+    }
+
+    .vc-cents-secondary {
+      font-size: 15px;
+    }
+
+    /* Variation C multi-plan */
+    .vc-plan-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 16px;
+      border-bottom: 0.5px solid var(--grey400);
+      background: white;
+    }
+
+    .vc-plan-option:last-child { border-bottom: none; }
+
+    .vc-plan-row {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .vc-plan-name {
+      font-size: 14px;
+      color: var(--confidence);
+      line-height: 1.4;
+    }
+
+    .vc-plan-freq {
+      font-size: 12px;
+      color: var(--grey600);
+      margin-top: 2px;
+    }
+
+    .vc-today-col {
+      text-align: right;
+    }
+
+    .vc-today-amt {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--fearlessness-medium);
+      line-height: 1.2;
+    }
+
+    .vc-today-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--grey600);
+      margin-top: 1px;
+    }
+
+    /* ==============================
+       FULL-SCREEN SUBSECTION
+    ============================== */
+    .full-screen-subsection {
+      margin-left: 50px;
+      margin-top: 52px;
+    }
+
+    .full-screen-subsection-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--grey600);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .full-screen-subsection-label::after {
+      content: '';
+      display: block;
+      width: 120px;
+      height: 1px;
+      background: var(--grey400);
+    }
+
+    .full-screen-frames {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .mobile-frame-full {
+      width: 390px;
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==============================
+       REAL HEADER (LocalAppHeader — headerRedesign variant)
+    ============================== */
+    .screen-header {
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background-color: white;
+      padding: 16px 16px 24px 16px;
+      margin: 0;
+      border-bottom: 1px solid var(--grey400);
+    }
+
+    .screen-logo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .screen-close {
+      border: none;
+      background: none;
+      cursor: pointer;
+      position: absolute;
+      right: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--grey700);
+    }
+
+    /* ==============================
+       SCREEN BODY
+    ============================== */
+    .screen-body {
+      padding: 20px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ==============================
+       PAYMENT PLAN CIRCLES (PayInNInstallmentGraphic)
+    ============================== */
+    .pay-in-n-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      row-gap: 1.5rem;
+      padding: 16px 16px 16px 0;
+    }
+
+    .pay-in-n-installment {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pay-in-n-content {
+      margin-top: 4px;
+      text-align: center;
+      color: var(--grey600);
+    }
+
+    .pay-in-n-content.first {
+      color: var(--confidence);
+      font-weight: 500;
+    }
+
+    .pay-in-n-price {
+      font-size: 13px;
+      line-height: 18px;
+    }
+
+    .pay-in-n-date {
+      text-transform: capitalize;
+      font-size: 10px;
+      line-height: 14px;
+    }
+
+    /* DonutIcon SVG circles */
+    .donut-wrap {
+      position: relative;
+      width: 32px;
+      height: 32px;
+    }
+
+    /* ==============================
+       ACCORDION (Card + AccordionItem)
+    ============================== */
+    .accordion-body {
+      padding: 0 16px 16px 16px;
+    }
+
+    /* ==============================
+       EXISTING PAYMENT METHOD
+    ============================== */
+    .screen-card-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      background: white;
+      border: 1px solid var(--grey400);
+      border-radius: 10px;
+    }
+
+    .card-visa-badge {
+      width: 38px;
+      height: 25px;
+      background: #1A1F71;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .card-details-primary {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--confidence);
+    }
+
+    .card-details-secondary {
+      font-size: 11px;
+      color: var(--grey600);
+      margin-top: 2px;
+    }
+
+    /* ==============================
+       SIMPLE ORDER SUMMARY
+    ============================== */
+    .screen-order-summary {
+      background: white;
+      border: 1px solid var(--grey400);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .screen-order-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 16px;
+    }
+
+    .screen-order-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--confidence);
+    }
+
+    .screen-order-merchant {
+      font-size: 11px;
+      color: var(--grey600);
+      margin-top: 2px;
+    }
+
+    .screen-order-amount {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--confidence);
+    }
+
+    /* ==============================
+       DYNAMIC TILA (real component structure)
+    ============================== */
+    .tila-card {
+      background: white;
+      border: 1px solid var(--grey400);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .tila-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .tila-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--confidence);
+      letter-spacing: 0;
+    }
+
+    .tila-item-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--confidence);
+    }
+
+    .tila-divider {
+      border: none;
+      border-top: 1px solid var(--grey400);
+      margin: 0;
+    }
+
+    .tila-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tila-amount-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tila-label-upper {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--confidence);
+      text-transform: uppercase;
+    }
+
+    .tila-sub {
+      font-size: 11px;
+      color: var(--grey600);
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    .tila-info-line {
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--confidence);
+    }
+
+    .tila-info-medium { font-weight: 500; }
+    .tila-info-book   { font-weight: 400; }
+
+    /* ==============================
+       CTA BUTTON + LEGAL COPY
+    ============================== */
+    .screen-cta-button {
+      width: 100%;
+      padding: 15px;
+      background: var(--fearlessness-medium);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: -0.2px;
+      margin-top: 2px;
+    }
+
+    .screen-legal-copy {
+      font-size: 10px;
+      color: var(--grey600);
+      line-height: 1.6;
+    }
+
+    .screen-legal-copy a {
+      color: var(--fearlessness-medium);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================== STICKY NAV ============================== -->
+<nav class="sticky-nav">
+  <span class="nav-logo">zip</span>
+  <a href="#control">Control</a>
+  <span class="nav-sep">·</span>
+  <a href="#var-a">A — Subtle Swap</a>
+  <span class="nav-sep">·</span>
+  <a href="#var-b">B — Bold Hero</a>
+  <span class="nav-sep">·</span>
+  <a href="#var-c">C — Split Panel</a>
+</nav>
+
+<div class="page-content">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-title">AI POC: CKO Due Today Test</div>
+    <p class="page-subtitle">
+      Three A/B test variations for the Checkout payment plan screen. Each variant emphasizes the
+      <strong>amount due today</strong> (first installment) instead of the full order amount — to reduce
+      drop-off after risk approval. Both single-plan and multi-plan states are shown for mobile and desktop.
+    </p>
+    <div class="page-meta">
+      <div class="meta-item"><strong>Product owner:</strong> John Kresse</div>
+      <div class="meta-item"><strong>Screen:</strong> /payment (CKO)</div>
+      <div class="meta-item"><strong>Components:</strong> PaymentPlanSpotlight · PaymentPlanSelector</div>
+      <div class="meta-item"><strong>Experiment:</strong> Optimizely (to be wired up post-variation selection)</div>
+      <div class="meta-item"><strong>Mock data:</strong> $250.00 order · 4 payments of $62.50 (Pay-in-4) · 2 payments of $125.00 (Pay-in-2)</div>
+    </div>
+  </div>
+
+  <!-- ============================== CONTROL ============================== -->
+  <section class="variation-section" id="control">
+    <div class="variation-header">
+      <div class="variation-badge control">C</div>
+      <span class="variation-title">Control — Current Experience <span class="tag tag-grey">No change</span></span>
+    </div>
+    <p class="variation-description">
+      Current production layout shown for reference. The installment count and per-payment amount is the primary
+      headline ("4 bi-weekly payments of $62.50"). No explicit "due today" framing.
+    </p>
+
+    <div class="device-frames">
+      <!-- Mobile — Single Plan -->
+      <div class="device-frame">
+        <div class="device-label">Mobile — Single Plan</div>
+        <div class="mobile-frame">
+          <div class="zip-card">
+            <div class="zip-card-inner">
+              <div class="ctrl-spotlight">
+                <span class="ctrl-eyebrow">4 bi-weekly payments of</span>
+                <div class="ctrl-amount-row">
+                  <span class="ctrl-dollar">$</span>
+                  <span class="ctrl-number">62<span class="ctrl-cents">.50</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-toggle">
+              <span>Payment plan summary</span><span class="chevron">▼</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile — Multiple Plans -->
+      <div class="device-frame">
+        <div class="device-label">Mobile — Multiple Plans</div>
+        <div class="mobile-frame">
+          <div class="plan-selector">
+            <div class="plan-option">
+              <div class="radio-circle selected"></div>
+              <div>
+                <div class="plan-text-primary">4 payments of $62.50</div>
+                <div class="plan-text-secondary">Pay bi-weekly over 6 weeks</div>
+              </div>
+            </div>
+            <div class="plan-option">
+              <div class="radio-circle"></div>
+              <div>
+                <div class="plan-text-primary">2 payments of $125.00</div>
+                <div class="plan-text-secondary">Half now, half later</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop — Single Plan -->
+      <div class="device-frame">
+        <div class="device-label">Desktop — Single Plan</div>
+        <div class="desktop-frame">
+          <div class="zip-card">
+            <div class="zip-card-inner" style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="ctrl-spotlight">
+                <span class="ctrl-eyebrow">4 bi-weekly payments of</span>
+                <div class="ctrl-amount-row">
+                  <span class="ctrl-dollar">$</span>
+                  <span class="ctrl-number">62<span class="ctrl-cents">.50</span></span>
+                </div>
+              </div>
+              <span class="chevron" style="font-size:14px;">▼</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Screen: Control -->
+    <div class="full-screen-subsection">
+      <div class="full-screen-subsection-label">Full payment screen</div>
+      <div class="full-screen-frames">
+        <div class="device-frame">
+          <div class="device-label">Mobile — Full screen</div>
+          <div class="mobile-frame-full">
+            <div class="screen-header">
+              <div class="screen-logo-wrap">
+                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo">
+                  <path d="M1.81635 17.5474L2.32973 21.7154H20.3506L19.7627 16.9439H11.3731L11.2985 16.3535L19.0385 10.9785L18.5208 6.80615H0.5L1.08797 11.5776H9.50823L9.58283 12.1724L1.81635 17.5474Z" fill="#191919"/>
+                  <path d="M20.6201 6.80615L22.463 21.7154H40.4969L38.676 6.80615H20.6201Z" fill="#AA8FFF"/>
+                  <path d="M59.4112 12.1866C58.9722 8.83656 56.3396 6.80726 52.7415 6.82038H40.7451L42.5881 21.7297H47.9852L47.6166 18.7469H53.3207C57.8228 18.7469 59.8806 15.9522 59.4112 12.1866ZM52.746 14.5658H47.1032L46.6644 10.9883H52.3378C53.6542 10.9883 54.3563 11.7493 54.466 12.7727C54.4999 13.0082 54.4796 13.2484 54.4065 13.4749C54.3334 13.7014 54.2093 13.9083 54.0438 14.0799C53.8785 14.2515 53.6761 14.3833 53.4519 14.4652C53.2278 14.5471 53.0409 14.5658 52.746 14.5658Z" fill="#191919"/>
+                  <path d="M26.1152 4.88723C27.0674 3.87697 26.9095 2.18879 25.7598 1.11292C24.6102 0.03704 22.899 -0.0154369 21.9423 0.994837C20.9858 2.00512 21.1482 3.69765 22.2978 4.77353C23.4475 5.84941 25.1587 5.89751 26.1152 4.88723Z" fill="#191919"/>
+                </svg>
+              </div>
+              <button class="screen-close" aria-label="Close checkout">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 2L14 14M14 2L2 14" stroke="#544A5A" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="screen-body">
+              <!-- 1. PaymentPlanSpotlight (renders first per page.tsx) -->
+              <div class="zip-card" style="margin-bottom:0;">
+                <div class="zip-card-inner">
+                  <div class="ctrl-spotlight">
+                    <span class="ctrl-eyebrow">4 bi-weekly payments of</span>
+                    <div class="ctrl-amount-row">
+                      <span class="ctrl-dollar">$</span>
+                      <span class="ctrl-number">62<span class="ctrl-cents">.50</span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-toggle">
+                  <span>Payment plan summary</span><span class="chevron">▲</span>
+                </div>
+                <!-- PayInNInstallmentGraphic — expanded accordion state -->
+                <div class="accordion-body">
+                  <div class="pay-in-n-grid">
+                    <!-- Installment 1: Due Today -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="#6542BE" stroke="#6542BE" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" font-weight="600" fill="white" font-family="sans-serif">1</text>
+                      </svg>
+                      <div class="pay-in-n-content first">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Due Today</div>
+                      </div>
+                    </div>
+                    <!-- Installment 2 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">2</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Mar 7th</div>
+                      </div>
+                    </div>
+                    <!-- Installment 3 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">3</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Mar 21st</div>
+                      </div>
+                    </div>
+                    <!-- Installment 4 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">4</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Apr 4th</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 2. SimpleOrderSummary -->
+              <div class="screen-order-summary">
+                <div class="screen-order-row">
+                  <div>
+                    <div class="screen-order-label">Order total</div>
+                    <div class="screen-order-merchant">Acme Co.</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="screen-order-amount">$250.00</span>
+                    <span class="chevron">▼</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 3. ExistingPaymentMethod -->
+              <div class="screen-card-row">
+                <div class="card-visa-badge">VISA</div>
+                <div>
+                  <div class="card-details-primary">Visa ···· 4242</div>
+                  <div class="card-details-secondary">Expires 09/28</div>
+                </div>
+              </div>
+              <!-- 4. DynamicTila — matches real DynamicTila component structure -->
+              <div class="tila-card">
+                <div class="tila-wrap">
+                  <div class="tila-title">Federal Truth in Lending Disclosure</div>
+                  <div class="tila-item-row"><span>Due today</span><span>$62.50</span></div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-item-row"><span>Remaining payments</span><span>3</span></div>
+                    <div class="tila-item-row"><span>Amount of payments</span><span>$62.50</span></div>
+                    <div class="tila-item-row"><span>First due</span><span>In 2 weeks</span></div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-amount-group">
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Annual percentage rate</span><span>0%</span></div>
+                      <div class="tila-sub">The cost of your credit as a yearly rate.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Finance charge</span><span>$0.00</span></div>
+                      <div class="tila-sub">The dollar amount the credit will cost you.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Amount financed</span><span>$250.00</span></div>
+                      <div class="tila-sub">The amount of credit provided to you or on your behalf.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Total of payments</span><span>$250.00</span></div>
+                      <div class="tila-sub">The amount you will have paid after you have made all payments as scheduled.</div>
+                    </div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-info-line"><span class="tila-info-medium">Prepayment:</span> <span class="tila-info-book">If you pay off early, you will not have to pay a penalty.</span></div>
+                    <div class="tila-info-line"><span class="tila-info-medium">Late payment:</span> <span class="tila-info-book">If a payment is late, you may be charged a late fee.</span></div>
+                    <div class="tila-info-line"><span class="tila-info-medium">See your contract </span><span class="tila-info-book">documents for any additional information about nonpayment, default, any required repayment in full before the scheduled date, and prepayment refunds and penalties.</span></div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-info-line tila-info-medium">Itemization of amount financed</div>
+                    <div class="tila-info-line tila-info-book">Amount paid to merchant: $250.00</div>
+                    <div class="tila-info-line tila-info-book">Origination fee: $0.00</div>
+                    <div class="tila-info-line tila-info-book">Other fee amount: $0.00</div>
+                    <div class="tila-info-line"><span class="tila-info-medium">Creditor:</span> <span class="tila-info-book">Zip Co US Inc., 135 Madison Ave, New York, NY 10016</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 5. Legal copy -->
+              <div class="screen-legal-copy">By tapping "Agree and continue", I acknowledge I have read the <a href="#">Truth in Lending Disclosure</a> and I grant Zip full authorization to charge my debit or credit card on or after the payment due dates shown above. This authorization is subject to our <a href="#">Terms &amp; Conditions</a>.</div>
+              <!-- 6. CTA -->
+              <button class="screen-cta-button">Agree and continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ============================== VARIATION A ============================== -->
+  <section class="variation-section" id="var-a">
+    <div class="variation-header">
+      <div class="variation-badge">A</div>
+      <span class="variation-title">Variation A — Subtle "Due Today" Label Swap <span class="tag tag-green">Lowest effort</span></span>
+    </div>
+    <p class="variation-description">
+      Minimal change to the current layout. <strong>"Due today"</strong> replaces "4 bi-weekly payments of" as the
+      primary label above the large dollar amount. A smaller secondary line ("4 bi-weekly payments of $62.50") preserves
+      plan structure for transparency. The visual weight of the amount stays the same as control. Lowest dev lift —
+      pure copy and label change. Matches how Klarna frames its checkout.
+    </p>
+
+    <div class="device-frames">
+      <!-- Mobile — Single Plan -->
+      <div class="device-frame">
+        <div class="device-label">Mobile — Single Plan</div>
+        <div class="mobile-frame">
+          <div class="zip-card">
+            <div class="zip-card-inner">
+              <div class="va-spotlight">
+                <span class="va-label">Due today</span>
+                <div class="va-amount-row">
+                  <span class="va-dollar">$</span>
+                  <span class="va-number">62<span class="ctrl-cents">.50</span></span>
+                </div>
+                <span class="va-secondary">4 bi-weekly payments of $62.50 · $250.00 total</span>
+              </div>
+            </div>
+            <div class="accordion-toggle">
+              <span>Payment plan summary</span><span class="chevron">▼</span>
+            </div>
+          </div>
+          <div class="annotation">
+            "Due today" replaces installment count as headline. Secondary line retains plan context.
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile — Multiple Plans -->
+      <div class="device-frame">
+        <div class="device-label">Mobile — Multiple Plans</div>
+        <div class="mobile-frame">
+          <div class="plan-selector">
+            <div class="plan-option">
+              <div class="radio-circle selected"></div>
+              <div>
+                <div class="plan-text-primary">Due today: <strong>$62.50</strong></div>
+                <div class="plan-text-secondary">4 bi-weekly payments of $62.50 · $250.00 total</div>
+              </div>
+            </div>
+            <div class="plan-option">
+              <div class="radio-circle"></div>
+              <div>
+                <div class="plan-text-primary">Due today: <strong>$125.00</strong></div>
+                <div class="plan-text-secondary">2 payments · half now, half later · $250.00 total</div>
+              </div>
+            </div>
+          </div>
+          <div class="annotation">
+            Each plan leads with "Due today: $X" — plan details move to secondary text.
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop — Single Plan -->
+      <div class="device-frame">
+        <div class="device-label">Desktop — Single Plan</div>
+        <div class="desktop-frame">
+          <div class="zip-card">
+            <div class="zip-card-inner" style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="va-spotlight">
+                <span class="va-label">Due today</span>
+                <div class="va-amount-row">
+                  <span class="va-dollar">$</span>
+                  <span class="va-number">62<span class="ctrl-cents">.50</span></span>
+                </div>
+                <span class="va-secondary">4 bi-weekly payments of $62.50 · $250.00 total</span>
+              </div>
+              <span class="chevron" style="font-size:14px;">▼</span>
+            </div>
+          </div>
+          <!-- Desktop multi-plan -->
+          <div class="plan-selector" style="margin-top:20px;">
+            <div class="plan-option">
+              <div class="radio-circle selected"></div>
+              <div>
+                <div class="plan-text-primary">Due today: <strong>$62.50</strong></div>
+                <div class="plan-text-secondary">4 bi-weekly payments · $250.00 total</div>
+              </div>
+            </div>
+            <div class="plan-option">
+              <div class="radio-circle"></div>
+              <div>
+                <div class="plan-text-primary">Due today: <strong>$125.00</strong></div>
+                <div class="plan-text-secondary">2 payments · half now, half later · $250.00 total</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Screen: Variation A -->
+    <div class="full-screen-subsection">
+      <div class="full-screen-subsection-label">Full payment screen</div>
+      <div class="full-screen-frames">
+        <div class="device-frame">
+          <div class="device-label">Mobile — Full screen</div>
+          <div class="mobile-frame-full">
+            <div class="screen-header">
+              <div class="screen-logo-wrap">
+                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo">
+                  <path d="M1.81635 17.5474L2.32973 21.7154H20.3506L19.7627 16.9439H11.3731L11.2985 16.3535L19.0385 10.9785L18.5208 6.80615H0.5L1.08797 11.5776H9.50823L9.58283 12.1724L1.81635 17.5474Z" fill="#191919"/>
+                  <path d="M20.6201 6.80615L22.463 21.7154H40.4969L38.676 6.80615H20.6201Z" fill="#AA8FFF"/>
+                  <path d="M59.4112 12.1866C58.9722 8.83656 56.3396 6.80726 52.7415 6.82038H40.7451L42.5881 21.7297H47.9852L47.6166 18.7469H53.3207C57.8228 18.7469 59.8806 15.9522 59.4112 12.1866ZM52.746 14.5658H47.1032L46.6644 10.9883H52.3378C53.6542 10.9883 54.3563 11.7493 54.466 12.7727C54.4999 13.0082 54.4796 13.2484 54.4065 13.4749C54.3334 13.7014 54.2093 13.9083 54.0438 14.0799C53.8785 14.2515 53.6761 14.3833 53.4519 14.4652C53.2278 14.5471 53.0409 14.5658 52.746 14.5658Z" fill="#191919"/>
+                  <path d="M26.1152 4.88723C27.0674 3.87697 26.9095 2.18879 25.7598 1.11292C24.6102 0.03704 22.899 -0.0154369 21.9423 0.994837C20.9858 2.00512 21.1482 3.69765 22.2978 4.77353C23.4475 5.84941 25.1587 5.89751 26.1152 4.88723Z" fill="#191919"/>
+                </svg>
+              </div>
+              <button class="screen-close" aria-label="Close checkout">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 2L14 14M14 2L2 14" stroke="#544A5A" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="screen-body">
+              <!-- 1. PaymentPlanSpotlight — Variation A -->
+              <div class="zip-card" style="margin-bottom:0;">
+                <div class="zip-card-inner">
+                  <div class="va-spotlight">
+                    <span class="va-label">Due today</span>
+                    <div class="va-amount-row">
+                      <span class="va-dollar">$</span>
+                      <span class="va-number">62<span class="ctrl-cents">.50</span></span>
+                    </div>
+                    <span class="va-secondary">4 bi-weekly payments of $62.50 · $250.00 total</span>
+                  </div>
+                </div>
+                <div class="accordion-toggle">
+                  <span>Payment plan summary</span><span class="chevron">▲</span>
+                </div>
+                <!-- PayInNInstallmentGraphic — expanded accordion state -->
+                <div class="accordion-body">
+                  <div class="pay-in-n-grid">
+                    <!-- Installment 1: Due Today -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="#6542BE" stroke="#6542BE" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" font-weight="600" fill="white" font-family="sans-serif">1</text>
+                      </svg>
+                      <div class="pay-in-n-content first">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Due Today</div>
+                      </div>
+                    </div>
+                    <!-- Installment 2 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">2</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Mar 7th</div>
+                      </div>
+                    </div>
+                    <!-- Installment 3 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">3</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Mar 21st</div>
+                      </div>
+                    </div>
+                    <!-- Installment 4 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">4</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Apr 4th</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 2. SimpleOrderSummary -->
+              <div class="screen-order-summary">
+                <div class="screen-order-row">
+                  <div>
+                    <div class="screen-order-label">Order total</div>
+                    <div class="screen-order-merchant">Acme Co.</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="screen-order-amount">$250.00</span>
+                    <span class="chevron">▼</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 3. ExistingPaymentMethod -->
+              <div class="screen-card-row">
+                <div class="card-visa-badge">VISA</div>
+                <div>
+                  <div class="card-details-primary">Visa ···· 4242</div>
+                  <div class="card-details-secondary">Expires 09/28</div>
+                </div>
+              </div>
+              <!-- 4. DynamicTila — matches real DynamicTila component structure -->
+              <div class="tila-card">
+                <div class="tila-wrap">
+                  <div class="tila-title">Federal Truth in Lending Disclosure</div>
+                  <div class="tila-item-row"><span>Due today</span><span>$62.50</span></div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-item-row"><span>Remaining payments</span><span>3</span></div>
+                    <div class="tila-item-row"><span>Amount of payments</span><span>$62.50</span></div>
+                    <div class="tila-item-row"><span>First due</span><span>In 2 weeks</span></div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-amount-group">
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Annual percentage rate</span><span>0%</span></div>
+                      <div class="tila-sub">The cost of your credit as a yearly rate.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Finance charge</span><span>$0.00</span></div>
+                      <div class="tila-sub">The dollar amount the credit will cost you.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Amount financed</span><span>$250.00</span></div>
+                      <div class="tila-sub">The amount of credit provided to you or on your behalf.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Total of payments</span><span>$250.00</span></div>
+                      <div class="tila-sub">The amount you will have paid after you have made all payments as scheduled.</div>
+                    </div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-info-line"><span class="tila-info-medium">Prepayment:</span> <span class="tila-info-book">If you pay off early, you will not have to pay a penalty.</span></div>
+                    <div class="tila-info-line"><span class="tila-info-medium">Late payment:</span> <span class="tila-info-book">If a payment is late, you may be charged a late fee.</span></div>
+                    <div class="tila-info-line"><span class="tila-info-medium">See your contract </span><span class="tila-info-book">documents for any additional information about nonpayment, default, any required repayment in full before the scheduled date, and prepayment refunds and penalties.</span></div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-info-line tila-info-medium">Itemization of amount financed</div>
+                    <div class="tila-info-line tila-info-book">Amount paid to merchant: $250.00</div>
+                    <div class="tila-info-line tila-info-book">Origination fee: $0.00</div>
+                    <div class="tila-info-line tila-info-book">Other fee amount: $0.00</div>
+                    <div class="tila-info-line"><span class="tila-info-medium">Creditor:</span> <span class="tila-info-book">Zip Co US Inc., 135 Madison Ave, New York, NY 10016</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 5. Legal copy -->
+              <div class="screen-legal-copy">By tapping "Agree and continue", I acknowledge I have read the <a href="#">Truth in Lending Disclosure</a> and I grant Zip full authorization to charge my debit or credit card on or after the payment due dates shown above. This authorization is subject to our <a href="#">Terms &amp; Conditions</a>.</div>
+              <!-- 6. CTA -->
+              <button class="screen-cta-button">Agree and continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Strengths</h4>
+        <ul>
+          <li>Minimal layout change — lowest dev effort</li>
+          <li>Easy to A/B test (pure copy change)</li>
+          <li>Retains plan transparency via secondary line</li>
+          <li>Closest to Klarna's "pay today" framing</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Considerations</h4>
+        <ul>
+          <li>Amount stays same visual weight as control</li>
+          <li>May not generate strong conversion lift alone</li>
+          <li>"Due today" label is small and understated</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ============================== VARIATION B ============================== -->
+  <section class="variation-section" id="var-b">
+    <div class="variation-header">
+      <div class="variation-badge">B</div>
+      <span class="variation-title">Variation B — Bold "Due Today" Hero <span class="tag tag-purple">High emphasis</span></span>
+    </div>
+    <p class="variation-description">
+      Maximum visual impact. The first installment amount becomes the dominant hero element — rendered in Zip's brand
+      purple at 44px with a purple pill badge labeled <strong>"DUE TODAY"</strong> above it. The installment count
+      and total order amount drop to muted secondary text. This most aggressively reinforces the Zip value prop
+      ("pay less today") and most closely mirrors how Afterpay emphasizes their first payment.
+    </p>
+
+    <div class="device-frames">
+      <!-- Mobile — Single Plan -->
+      <div class="device-frame">
+        <div class="device-label">Mobile — Single Plan</div>
+        <div class="mobile-frame">
+          <div class="zip-card">
+            <div class="zip-card-inner">
+              <div class="vb-spotlight">
+                <span class="vb-pill">Due today</span>
+                <div class="vb-amount-row">
+                  <span class="vb-dollar">$</span>
+                  <span class="vb-number">62<span class="vb-cents">.50</span></span>
+                </div>
+                <span class="vb-secondary">then 3 more payments of $62.50 · $250.00 total</span>
+              </div>
+            </div>
+            <div class="accordion-toggle">
+              <span>Payment plan summary</span><span class="chevron">▼</span>
+            </div>
+          </div>
+          <div class="annotation">
+            Purple pill badge + large purple hero amount. Order total visible but clearly secondary.
+            "Then 3 more payments" framing makes remaining obligation concrete.
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile — Multiple Plans -->
+      <div class="device-frame">
+        <div class="device-label">Mobile — Multiple Plans</div>
+        <div class="mobile-frame">
+          <div class="plan-selector">
+            <div class="vb-plan-option" style="border-radius: 8px 8px 0 0;">
+              <div class="radio-circle selected"></div>
+              <div style="flex:1">
+                <div class="vb-plan-title">Due today: <span class="vb-today-amount">$62.50</span></div>
+                <div class="vb-plan-subtitle">4 bi-weekly payments · $250.00 total</div>
+              </div>
+            </div>
+            <div class="vb-plan-option" style="border-radius: 0 0 8px 8px;">
+              <div class="radio-circle"></div>
+              <div style="flex:1">
+                <div class="vb-plan-title">Due today: <span class="vb-today-amount">$125.00</span></div>
+                <div class="vb-plan-subtitle">2 payments · half now, half later · $250.00 total</div>
+              </div>
+            </div>
+          </div>
+          <div class="annotation">
+            "Due today" with amount in brand purple. Full order total visible in muted secondary text.
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop — Single Plan -->
+      <div class="device-frame">
+        <div class="device-label">Desktop — Single Plan + Multiple Plans</div>
+        <div class="desktop-frame">
+          <div class="zip-card" style="margin-bottom: 20px;">
+            <div class="zip-card-inner" style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="vb-spotlight">
+                <span class="vb-pill">Due today</span>
+                <div class="vb-amount-row">
+                  <span class="vb-dollar">$</span>
+                  <span class="vb-number">62<span class="vb-cents">.50</span></span>
+                </div>
+                <span class="vb-secondary">then 3 more payments of $62.50 · $250.00 total</span>
+              </div>
+              <span class="chevron" style="font-size:14px;">▼</span>
+            </div>
+          </div>
+          <div class="plan-selector">
+            <div class="vb-plan-option" style="border-radius: 8px 8px 0 0;">
+              <div class="radio-circle selected"></div>
+              <div style="flex:1">
+                <div class="vb-plan-title">Due today: <span class="vb-today-amount">$62.50</span></div>
+                <div class="vb-plan-subtitle">4 bi-weekly payments · $250.00 total</div>
+              </div>
+            </div>
+            <div class="vb-plan-option" style="border-radius: 0 0 8px 8px;">
+              <div class="radio-circle"></div>
+              <div style="flex:1">
+                <div class="vb-plan-title">Due today: <span class="vb-today-amount">$125.00</span></div>
+                <div class="vb-plan-subtitle">2 payments · half now, half later · $250.00 total</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Screen: Variation B -->
+    <div class="full-screen-subsection">
+      <div class="full-screen-subsection-label">Full payment screen</div>
+      <div class="full-screen-frames">
+        <div class="device-frame">
+          <div class="device-label">Mobile — Full screen</div>
+          <div class="mobile-frame-full">
+            <div class="screen-header">
+              <div class="screen-logo-wrap">
+                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo">
+                  <path d="M1.81635 17.5474L2.32973 21.7154H20.3506L19.7627 16.9439H11.3731L11.2985 16.3535L19.0385 10.9785L18.5208 6.80615H0.5L1.08797 11.5776H9.50823L9.58283 12.1724L1.81635 17.5474Z" fill="#191919"/>
+                  <path d="M20.6201 6.80615L22.463 21.7154H40.4969L38.676 6.80615H20.6201Z" fill="#AA8FFF"/>
+                  <path d="M59.4112 12.1866C58.9722 8.83656 56.3396 6.80726 52.7415 6.82038H40.7451L42.5881 21.7297H47.9852L47.6166 18.7469H53.3207C57.8228 18.7469 59.8806 15.9522 59.4112 12.1866ZM52.746 14.5658H47.1032L46.6644 10.9883H52.3378C53.6542 10.9883 54.3563 11.7493 54.466 12.7727C54.4999 13.0082 54.4796 13.2484 54.4065 13.4749C54.3334 13.7014 54.2093 13.9083 54.0438 14.0799C53.8785 14.2515 53.6761 14.3833 53.4519 14.4652C53.2278 14.5471 53.0409 14.5658 52.746 14.5658Z" fill="#191919"/>
+                  <path d="M26.1152 4.88723C27.0674 3.87697 26.9095 2.18879 25.7598 1.11292C24.6102 0.03704 22.899 -0.0154369 21.9423 0.994837C20.9858 2.00512 21.1482 3.69765 22.2978 4.77353C23.4475 5.84941 25.1587 5.89751 26.1152 4.88723Z" fill="#191919"/>
+                </svg>
+              </div>
+              <button class="screen-close" aria-label="Close checkout">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 2L14 14M14 2L2 14" stroke="#544A5A" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="screen-body">
+              <!-- 1. PaymentPlanSpotlight — Variation B -->
+              <div class="zip-card" style="margin-bottom:0;">
+                <div class="zip-card-inner">
+                  <div class="vb-spotlight">
+                    <span class="vb-pill">Due today</span>
+                    <div class="vb-amount-row">
+                      <span class="vb-dollar">$</span>
+                      <span class="vb-number">62<span class="vb-cents">.50</span></span>
+                    </div>
+                    <span class="vb-secondary">then 3 more payments of $62.50 · $250.00 total</span>
+                  </div>
+                </div>
+                <div class="accordion-toggle">
+                  <span>Payment plan summary</span><span class="chevron">▲</span>
+                </div>
+                <!-- PayInNInstallmentGraphic — expanded accordion state -->
+                <div class="accordion-body">
+                  <div class="pay-in-n-grid">
+                    <!-- Installment 1: Due Today -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="#6542BE" stroke="#6542BE" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" font-weight="600" fill="white" font-family="sans-serif">1</text>
+                      </svg>
+                      <div class="pay-in-n-content first">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Due Today</div>
+                      </div>
+                    </div>
+                    <!-- Installment 2 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">2</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Mar 7th</div>
+                      </div>
+                    </div>
+                    <!-- Installment 3 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">3</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Mar 21st</div>
+                      </div>
+                    </div>
+                    <!-- Installment 4 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">4</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Apr 4th</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 2. SimpleOrderSummary -->
+              <div class="screen-order-summary">
+                <div class="screen-order-row">
+                  <div>
+                    <div class="screen-order-label">Order total</div>
+                    <div class="screen-order-merchant">Acme Co.</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="screen-order-amount">$250.00</span>
+                    <span class="chevron">▼</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 3. ExistingPaymentMethod -->
+              <div class="screen-card-row">
+                <div class="card-visa-badge">VISA</div>
+                <div>
+                  <div class="card-details-primary">Visa ···· 4242</div>
+                  <div class="card-details-secondary">Expires 09/28</div>
+                </div>
+              </div>
+              <!-- 4. DynamicTila — matches real DynamicTila component structure -->
+              <div class="tila-card">
+                <div class="tila-wrap">
+                  <div class="tila-title">Federal Truth in Lending Disclosure</div>
+                  <div class="tila-item-row"><span>Due today</span><span>$62.50</span></div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-item-row"><span>Remaining payments</span><span>3</span></div>
+                    <div class="tila-item-row"><span>Amount of payments</span><span>$62.50</span></div>
+                    <div class="tila-item-row"><span>First due</span><span>In 2 weeks</span></div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-amount-group">
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Annual percentage rate</span><span>0%</span></div>
+                      <div class="tila-sub">The cost of your credit as a yearly rate.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Finance charge</span><span>$0.00</span></div>
+                      <div class="tila-sub">The dollar amount the credit will cost you.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Amount financed</span><span>$250.00</span></div>
+                      <div class="tila-sub">The amount of credit provided to you or on your behalf.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Total of payments</span><span>$250.00</span></div>
+                      <div class="tila-sub">The amount you will have paid after you have made all payments as scheduled.</div>
+                    </div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-info-line"><span class="tila-info-medium">Prepayment:</span> <span class="tila-info-book">If you pay off early, you will not have to pay a penalty.</span></div>
+                    <div class="tila-info-line"><span class="tila-info-medium">Late payment:</span> <span class="tila-info-book">If a payment is late, you may be charged a late fee.</span></div>
+                    <div class="tila-info-line"><span class="tila-info-medium">See your contract </span><span class="tila-info-book">documents for any additional information about nonpayment, default, any required repayment in full before the scheduled date, and prepayment refunds and penalties.</span></div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-info-line tila-info-medium">Itemization of amount financed</div>
+                    <div class="tila-info-line tila-info-book">Amount paid to merchant: $250.00</div>
+                    <div class="tila-info-line tila-info-book">Origination fee: $0.00</div>
+                    <div class="tila-info-line tila-info-book">Other fee amount: $0.00</div>
+                    <div class="tila-info-line"><span class="tila-info-medium">Creditor:</span> <span class="tila-info-book">Zip Co US Inc., 135 Madison Ave, New York, NY 10016</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 5. Legal copy -->
+              <div class="screen-legal-copy">By tapping "Agree and continue", I acknowledge I have read the <a href="#">Truth in Lending Disclosure</a> and I grant Zip full authorization to charge my debit or credit card on or after the payment due dates shown above. This authorization is subject to our <a href="#">Terms &amp; Conditions</a>.</div>
+              <!-- 6. CTA -->
+              <button class="screen-cta-button">Agree and continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Strengths</h4>
+        <ul>
+          <li>Highest visual differentiation from control</li>
+          <li>Brand purple creates emotional value association</li>
+          <li>Most closely mirrors Afterpay's style</li>
+          <li>"Then 3 more payments" framing is very compelling</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Considerations</h4>
+        <ul>
+          <li>Largest visual change — more design tokens needed</li>
+          <li>Full order amount is secondary — compliance review needed</li>
+          <li>Departure from other screens' visual language</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ============================== VARIATION C ============================== -->
+  <section class="variation-section" id="var-c">
+    <div class="variation-header">
+      <div class="variation-badge">C</div>
+      <span class="variation-title">Variation C — Split "Due Today / Order Total" Panel <span class="tag tag-purple">Explicit contrast</span></span>
+    </div>
+    <p class="variation-description">
+      A two-column card layout that places <strong>"Due today"</strong> (in brand purple) and <strong>"Order total"</strong>
+      (in muted grey) side by side. The explicit visual contrast between what the customer pays now vs. the full amount
+      directly communicates Zip's core value prop. In the multi-plan radio list, the "due today" amount is right-aligned
+      in purple — making plan comparison by first payment effortless. Full order amount remains visible, supporting
+      compliance and transparency.
+    </p>
+
+    <div class="device-frames">
+      <!-- Mobile — Single Plan -->
+      <div class="device-frame">
+        <div class="device-label">Mobile — Single Plan</div>
+        <div class="mobile-frame">
+          <div class="zip-card">
+            <div class="zip-card-inner">
+              <div class="vc-spotlight">
+                <!-- Left: Due today -->
+                <div class="vc-panel">
+                  <span class="vc-panel-label">Due today</span>
+                  <div class="vc-amount-primary">
+                    <span class="vc-dollar-primary">$</span>
+                    <span class="vc-number-primary">62<span class="vc-cents-primary">.50</span></span>
+                  </div>
+                  <span class="vc-sub-primary">4 bi-weekly payments</span>
+                </div>
+                <div class="vc-divider"></div>
+                <!-- Right: Order total -->
+                <div class="vc-panel">
+                  <span class="vc-panel-label">Order total</span>
+                  <div class="vc-amount-secondary">
+                    <span class="vc-dollar-secondary">$</span>
+                    <span class="vc-number-secondary">250<span class="vc-cents-secondary">.00</span></span>
+                  </div>
+                  <span class="vc-sub-primary" style="color: var(--grey500);">over 6 weeks</span>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-toggle">
+              <span>Payment plan summary</span><span class="chevron">▼</span>
+            </div>
+          </div>
+          <div class="annotation">
+            Side-by-side: "Due today $62.50" (purple, prominent) vs "Order total $250.00" (grey, muted).
+            The contrast makes the Zip value prop immediately legible.
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile — Multiple Plans -->
+      <div class="device-frame">
+        <div class="device-label">Mobile — Multiple Plans</div>
+        <div class="mobile-frame">
+          <div class="plan-selector">
+            <div class="vc-plan-option" style="border-radius: 8px 8px 0 0;">
+              <div class="radio-circle selected"></div>
+              <div class="vc-plan-row">
+                <div>
+                  <div class="vc-plan-name">Pay in 4</div>
+                  <div class="vc-plan-freq">Bi-weekly over 6 weeks</div>
+                </div>
+                <div class="vc-today-col">
+                  <div class="vc-today-amt">$62.50</div>
+                  <div class="vc-today-lbl">due today</div>
+                </div>
+              </div>
+            </div>
+            <div class="vc-plan-option" style="border-radius: 0 0 8px 8px;">
+              <div class="radio-circle"></div>
+              <div class="vc-plan-row">
+                <div>
+                  <div class="vc-plan-name">Pay in 2</div>
+                  <div class="vc-plan-freq">Half now, half later</div>
+                </div>
+                <div class="vc-today-col">
+                  <div class="vc-today-amt">$125.00</div>
+                  <div class="vc-today-lbl">due today</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="annotation">
+            Plan name + frequency on the left. Right-aligned "due today" amount in purple makes
+            comparing plans by first payment amount clear at a glance.
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop — Single Plan -->
+      <div class="device-frame">
+        <div class="device-label">Desktop — Single Plan + Multiple Plans</div>
+        <div class="desktop-frame">
+          <div class="zip-card" style="margin-bottom: 20px;">
+            <div class="zip-card-inner">
+              <div class="vc-spotlight">
+                <div class="vc-panel">
+                  <span class="vc-panel-label">Due today</span>
+                  <div class="vc-amount-primary">
+                    <span class="vc-dollar-primary">$</span>
+                    <span class="vc-number-primary">62<span class="vc-cents-primary">.50</span></span>
+                  </div>
+                  <span class="vc-sub-primary">4 bi-weekly payments</span>
+                </div>
+                <div class="vc-divider"></div>
+                <div class="vc-panel">
+                  <span class="vc-panel-label">Order total</span>
+                  <div class="vc-amount-secondary">
+                    <span class="vc-dollar-secondary">$</span>
+                    <span class="vc-number-secondary">250<span class="vc-cents-secondary">.00</span></span>
+                  </div>
+                  <span class="vc-sub-primary" style="color: var(--grey500);">over 6 weeks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="plan-selector">
+            <div class="vc-plan-option" style="border-radius: 8px 8px 0 0;">
+              <div class="radio-circle selected"></div>
+              <div class="vc-plan-row">
+                <div>
+                  <div class="vc-plan-name">Pay in 4</div>
+                  <div class="vc-plan-freq">Bi-weekly over 6 weeks</div>
+                </div>
+                <div class="vc-today-col">
+                  <div class="vc-today-amt">$62.50</div>
+                  <div class="vc-today-lbl">due today</div>
+                </div>
+              </div>
+            </div>
+            <div class="vc-plan-option" style="border-radius: 0 0 8px 8px;">
+              <div class="radio-circle"></div>
+              <div class="vc-plan-row">
+                <div>
+                  <div class="vc-plan-name">Pay in 2</div>
+                  <div class="vc-plan-freq">Half now, half later</div>
+                </div>
+                <div class="vc-today-col">
+                  <div class="vc-today-amt">$125.00</div>
+                  <div class="vc-today-lbl">due today</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Screen: Variation C -->
+    <div class="full-screen-subsection">
+      <div class="full-screen-subsection-label">Full payment screen</div>
+      <div class="full-screen-frames">
+        <div class="device-frame">
+          <div class="device-label">Mobile — Full screen</div>
+          <div class="mobile-frame-full">
+            <div class="screen-header">
+              <div class="screen-logo-wrap">
+                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo">
+                  <path d="M1.81635 17.5474L2.32973 21.7154H20.3506L19.7627 16.9439H11.3731L11.2985 16.3535L19.0385 10.9785L18.5208 6.80615H0.5L1.08797 11.5776H9.50823L9.58283 12.1724L1.81635 17.5474Z" fill="#191919"/>
+                  <path d="M20.6201 6.80615L22.463 21.7154H40.4969L38.676 6.80615H20.6201Z" fill="#AA8FFF"/>
+                  <path d="M59.4112 12.1866C58.9722 8.83656 56.3396 6.80726 52.7415 6.82038H40.7451L42.5881 21.7297H47.9852L47.6166 18.7469H53.3207C57.8228 18.7469 59.8806 15.9522 59.4112 12.1866ZM52.746 14.5658H47.1032L46.6644 10.9883H52.3378C53.6542 10.9883 54.3563 11.7493 54.466 12.7727C54.4999 13.0082 54.4796 13.2484 54.4065 13.4749C54.3334 13.7014 54.2093 13.9083 54.0438 14.0799C53.8785 14.2515 53.6761 14.3833 53.4519 14.4652C53.2278 14.5471 53.0409 14.5658 52.746 14.5658Z" fill="#191919"/>
+                  <path d="M26.1152 4.88723C27.0674 3.87697 26.9095 2.18879 25.7598 1.11292C24.6102 0.03704 22.899 -0.0154369 21.9423 0.994837C20.9858 2.00512 21.1482 3.69765 22.2978 4.77353C23.4475 5.84941 25.1587 5.89751 26.1152 4.88723Z" fill="#191919"/>
+                </svg>
+              </div>
+              <button class="screen-close" aria-label="Close checkout">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 2L14 14M14 2L2 14" stroke="#544A5A" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="screen-body">
+              <!-- 1. PaymentPlanSpotlight — Variation C -->
+              <div class="zip-card" style="margin-bottom:0;">
+                <div class="zip-card-inner">
+                  <div class="vc-spotlight">
+                    <div class="vc-panel">
+                      <span class="vc-panel-label">Due today</span>
+                      <div class="vc-amount-primary">
+                        <span class="vc-dollar-primary">$</span>
+                        <span class="vc-number-primary">62<span class="vc-cents-primary">.50</span></span>
+                      </div>
+                      <span class="vc-sub-primary">4 bi-weekly payments</span>
+                    </div>
+                    <div class="vc-divider"></div>
+                    <div class="vc-panel">
+                      <span class="vc-panel-label">Order total</span>
+                      <div class="vc-amount-secondary">
+                        <span class="vc-dollar-secondary">$</span>
+                        <span class="vc-number-secondary">250<span class="vc-cents-secondary">.00</span></span>
+                      </div>
+                      <span class="vc-sub-primary" style="color: var(--grey500);">over 6 weeks</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-toggle">
+                  <span>Payment plan summary</span><span class="chevron">▲</span>
+                </div>
+                <!-- PayInNInstallmentGraphic — expanded accordion state -->
+                <div class="accordion-body">
+                  <div class="pay-in-n-grid">
+                    <!-- Installment 1: Due Today -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="#6542BE" stroke="#6542BE" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" font-weight="600" fill="white" font-family="sans-serif">1</text>
+                      </svg>
+                      <div class="pay-in-n-content first">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Due Today</div>
+                      </div>
+                    </div>
+                    <!-- Installment 2 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">2</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Mar 7th</div>
+                      </div>
+                    </div>
+                    <!-- Installment 3 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">3</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Mar 21st</div>
+                      </div>
+                    </div>
+                    <!-- Installment 4 -->
+                    <div class="pay-in-n-installment">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="#C6C3C5" stroke-width="2"/>
+                        <text x="16" y="21" text-anchor="middle" font-size="13" fill="#8C858E" font-family="sans-serif">4</text>
+                      </svg>
+                      <div class="pay-in-n-content">
+                        <div class="pay-in-n-price">$62.50</div>
+                        <div class="pay-in-n-date">Apr 4th</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 2. SimpleOrderSummary -->
+              <div class="screen-order-summary">
+                <div class="screen-order-row">
+                  <div>
+                    <div class="screen-order-label">Order total</div>
+                    <div class="screen-order-merchant">Acme Co.</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="screen-order-amount">$250.00</span>
+                    <span class="chevron">▼</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 3. ExistingPaymentMethod -->
+              <div class="screen-card-row">
+                <div class="card-visa-badge">VISA</div>
+                <div>
+                  <div class="card-details-primary">Visa ···· 4242</div>
+                  <div class="card-details-secondary">Expires 09/28</div>
+                </div>
+              </div>
+              <!-- 4. DynamicTila — matches real DynamicTila component structure -->
+              <div class="tila-card">
+                <div class="tila-wrap">
+                  <div class="tila-title">Federal Truth in Lending Disclosure</div>
+                  <div class="tila-item-row"><span>Due today</span><span>$62.50</span></div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-item-row"><span>Remaining payments</span><span>3</span></div>
+                    <div class="tila-item-row"><span>Amount of payments</span><span>$62.50</span></div>
+                    <div class="tila-item-row"><span>First due</span><span>In 2 weeks</span></div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-amount-group">
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Annual percentage rate</span><span>0%</span></div>
+                      <div class="tila-sub">The cost of your credit as a yearly rate.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Finance charge</span><span>$0.00</span></div>
+                      <div class="tila-sub">The dollar amount the credit will cost you.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Amount financed</span><span>$250.00</span></div>
+                      <div class="tila-sub">The amount of credit provided to you or on your behalf.</div>
+                    </div>
+                    <div>
+                      <div class="tila-item-row"><span class="tila-label-upper">Total of payments</span><span>$250.00</span></div>
+                      <div class="tila-sub">The amount you will have paid after you have made all payments as scheduled.</div>
+                    </div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-info-line"><span class="tila-info-medium">Prepayment:</span> <span class="tila-info-book">If you pay off early, you will not have to pay a penalty.</span></div>
+                    <div class="tila-info-line"><span class="tila-info-medium">Late payment:</span> <span class="tila-info-book">If a payment is late, you may be charged a late fee.</span></div>
+                    <div class="tila-info-line"><span class="tila-info-medium">See your contract </span><span class="tila-info-book">documents for any additional information about nonpayment, default, any required repayment in full before the scheduled date, and prepayment refunds and penalties.</span></div>
+                  </div>
+                  <hr class="tila-divider">
+                  <div class="tila-section">
+                    <div class="tila-info-line tila-info-medium">Itemization of amount financed</div>
+                    <div class="tila-info-line tila-info-book">Amount paid to merchant: $250.00</div>
+                    <div class="tila-info-line tila-info-book">Origination fee: $0.00</div>
+                    <div class="tila-info-line tila-info-book">Other fee amount: $0.00</div>
+                    <div class="tila-info-line"><span class="tila-info-medium">Creditor:</span> <span class="tila-info-book">Zip Co US Inc., 135 Madison Ave, New York, NY 10016</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 5. Legal copy -->
+              <div class="screen-legal-copy">By tapping "Agree and continue", I acknowledge I have read the <a href="#">Truth in Lending Disclosure</a> and I grant Zip full authorization to charge my debit or credit card on or after the payment due dates shown above. This authorization is subject to our <a href="#">Terms &amp; Conditions</a>.</div>
+              <!-- 6. CTA -->
+              <button class="screen-cta-button">Agree and continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>Strengths</h4>
+        <ul>
+          <li>Makes value prop explicit and scannable</li>
+          <li>Order total still prominent — strong compliance posture</li>
+          <li>Multi-plan right-aligned amounts aid plan comparison</li>
+          <li>Most unique layout — differentiates from competitors</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Considerations</h4>
+        <ul>
+          <li>Biggest layout departure — most design tokens needed</li>
+          <li>Two-column layout needs testing on narrow viewports</li>
+          <li>More complex to implement in zip-components</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-content -->
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "AI POC - CKO Due Today Test",
+  "id": "cko-due-today-test",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"]
+}
