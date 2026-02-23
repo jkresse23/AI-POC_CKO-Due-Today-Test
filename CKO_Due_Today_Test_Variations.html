@@ -30,10 +30,26 @@
       --white: #FFFFFF;
     }
 
+    @font-face {
+      font-family: "SharpGrotesk";
+      src: url("../zip-frontends/apps/merchant-onboarding-hub/fonts/sharp-grotesk-book-25.woff2") format("woff2");
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: "SharpGrotesk";
+      src: url("../zip-frontends/apps/merchant-onboarding-hub/fonts/sharp-grotesk-medium-25.woff2") format("woff2");
+      font-weight: 500;
+    }
+    @font-face {
+      font-family: "SharpGrotesk";
+      src: url("../zip-frontends/apps/merchant-onboarding-hub/fonts/sharp-grotesk-semibold-25.woff2") format("woff2");
+      font-weight: 600;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-family: "SharpGrotesk", -apple-system, 'Inter', 'Helvetica Neue', Arial, sans-serif;
       background: #F0EFF0;
       color: var(--confidence);
       padding: 0;
@@ -725,6 +741,7 @@
       padding: 16px 16px 24px 16px;
       margin: 0;
       border-bottom: 1px solid var(--grey400);
+      border-radius: 1.5rem 1.5rem 0 0;
     }
 
     .screen-logo-wrap {
@@ -813,38 +830,51 @@
     .screen-card-row {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 11px 14px;
+      justify-content: space-between;
+      padding: 12px;
       background: white;
-      border: 1px solid var(--grey400);
-      border-radius: 10px;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0px 8px 16px -8px #00000014;
+      cursor: pointer;
     }
 
-    .card-visa-badge {
-      width: 38px;
-      height: 25px;
-      background: #1A1F71;
-      border-radius: 4px;
+    .screen-card-inner {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 8px;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      flex-shrink: 0;
+      gap: 12px;
+      text-transform: capitalize;
     }
 
-    .card-details-primary {
-      font-size: 13px;
-      font-weight: 600;
+    .card-brand-icon {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    .card-brand-name {
+      font-size: 14px;
+      font-weight: 500;
       color: var(--confidence);
     }
 
-    .card-details-secondary {
-      font-size: 11px;
+    .card-brand-type {
+      font-size: 13px;
+      font-weight: 400;
       color: var(--grey600);
-      margin-top: 2px;
+    }
+
+    .card-brand-digits {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--grey600);
+    }
+
+    .card-arrow {
+      display: flex;
+      align-items: center;
     }
 
     /* ==============================
@@ -861,19 +891,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 13px 16px;
+      padding: 16px 16px 16px 16px;
     }
 
     .screen-order-label {
       font-size: 13px;
       font-weight: 600;
       color: var(--confidence);
-    }
-
-    .screen-order-merchant {
-      font-size: 11px;
-      color: var(--grey600);
-      margin-top: 2px;
     }
 
     .screen-order-amount {
@@ -901,6 +925,7 @@
     .tila-title {
       font-size: 13px;
       font-weight: 600;
+      font-family: "SharpGrotesk", sans-serif;
       color: var(--confidence);
       letter-spacing: 0;
     }
@@ -1101,7 +1126,7 @@
           <div class="mobile-frame-full">
             <div class="screen-header">
               <div class="screen-logo-wrap">
-                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo">
+                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo" style="margin-left: -7px; margin-top: -7px;">
                   <path d="M1.81635 17.5474L2.32973 21.7154H20.3506L19.7627 16.9439H11.3731L11.2985 16.3535L19.0385 10.9785L18.5208 6.80615H0.5L1.08797 11.5776H9.50823L9.58283 12.1724L1.81635 17.5474Z" fill="#191919"/>
                   <path d="M20.6201 6.80615L22.463 21.7154H40.4969L38.676 6.80615H20.6201Z" fill="#AA8FFF"/>
                   <path d="M59.4112 12.1866C58.9722 8.83656 56.3396 6.80726 52.7415 6.82038H40.7451L42.5881 21.7297H47.9852L47.6166 18.7469H53.3207C57.8228 18.7469 59.8806 15.9522 59.4112 12.1866ZM52.746 14.5658H47.1032L46.6644 10.9883H52.3378C53.6542 10.9883 54.3563 11.7493 54.466 12.7727C54.4999 13.0082 54.4796 13.2484 54.4065 13.4749C54.3334 13.7014 54.2093 13.9083 54.0438 14.0799C53.8785 14.2515 53.6761 14.3833 53.4519 14.4652C53.2278 14.5471 53.0409 14.5658 52.746 14.5658Z" fill="#191919"/>
@@ -1109,8 +1134,9 @@
                 </svg>
               </div>
               <button class="screen-close" aria-label="Close checkout">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 2L14 14M14 2L2 14" stroke="#544A5A" stroke-width="1.5" stroke-linecap="round"/>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.75 5.25L5.25 18.75" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  <path d="M18.75 18.75L5.25 5.25" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
                 </svg>
               </button>
             </div>
@@ -1182,10 +1208,7 @@
               <!-- 2. SimpleOrderSummary -->
               <div class="screen-order-summary">
                 <div class="screen-order-row">
-                  <div>
-                    <div class="screen-order-label">Order total</div>
-                    <div class="screen-order-merchant">Acme Co.</div>
-                  </div>
+                  <div class="screen-order-label">Order total</div>
                   <div style="display:flex;align-items:center;gap:8px;">
                     <span class="screen-order-amount">$250.00</span>
                     <span class="chevron">▼</span>
@@ -1194,10 +1217,22 @@
               </div>
               <!-- 3. ExistingPaymentMethod -->
               <div class="screen-card-row">
-                <div class="card-visa-badge">VISA</div>
-                <div>
-                  <div class="card-details-primary">Visa ···· 4242</div>
-                  <div class="card-details-secondary">Expires 09/28</div>
+                <div class="screen-card-inner">
+                  <div class="card-brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                      <path fill="#2100c4" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"/>
+                      <path fill="#fff" d="M15.186,19l-2.626,7.832c0,0-0.667-3.313-0.733-3.729c-1.495-3.411-3.701-3.221-3.701-3.221L10.726,30v-0.002h3.161L18.258,19H15.186z M17.689,30h2.871l1.736-11h-2.907L17.689,30z M38.008,19h-3.021l-4.71,11h2.852l0.588-1.571h3.596L37.619,30h2.613L38.008,19z M34.513,26.328l1.563-4.157l0.818,4.157H34.513z M26.369,22.206c0-0.606,0.498-1.057,1.926-1.057c0.928,0,1.991,0.674,1.991,0.674l0.466-2.309c0,0-1.358-0.515-2.691-0.515c-3.019,0-4.576,1.444-4.576,3.272c0,3.306,3.979,2.853,3.979,4.551c0,0.291-0.231,0.964-1.888,0.964c-1.662,0-2.759-0.609-2.759-0.609l-0.495,2.216c0,0,1.063,0.606,3.117,0.606c2.059,0,4.915-1.54,4.915-3.752C30.354,23.586,26.369,23.394,26.369,22.206z"/>
+                      <path fill="#f5bc00" d="M12.212,24.945l-0.966-4.748c0,0-0.437-1.029-1.573-1.029s-4.44,0-4.44,0S10.894,20.84,12.212,24.945z"/>
+                    </svg>
+                  </div>
+                  <span class="card-brand-name">Visa</span>
+                  <span class="card-brand-type">debit</span>
+                  <span class="card-brand-digits">•••• 4242</span>
+                </div>
+                <div class="card-arrow">
+                  <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2L7 7L2 12" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  </svg>
                 </div>
               </div>
               <!-- 4. DynamicTila — matches real DynamicTila component structure -->
@@ -1371,7 +1406,7 @@
           <div class="mobile-frame-full">
             <div class="screen-header">
               <div class="screen-logo-wrap">
-                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo">
+                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo" style="margin-left: -7px; margin-top: -7px;">
                   <path d="M1.81635 17.5474L2.32973 21.7154H20.3506L19.7627 16.9439H11.3731L11.2985 16.3535L19.0385 10.9785L18.5208 6.80615H0.5L1.08797 11.5776H9.50823L9.58283 12.1724L1.81635 17.5474Z" fill="#191919"/>
                   <path d="M20.6201 6.80615L22.463 21.7154H40.4969L38.676 6.80615H20.6201Z" fill="#AA8FFF"/>
                   <path d="M59.4112 12.1866C58.9722 8.83656 56.3396 6.80726 52.7415 6.82038H40.7451L42.5881 21.7297H47.9852L47.6166 18.7469H53.3207C57.8228 18.7469 59.8806 15.9522 59.4112 12.1866ZM52.746 14.5658H47.1032L46.6644 10.9883H52.3378C53.6542 10.9883 54.3563 11.7493 54.466 12.7727C54.4999 13.0082 54.4796 13.2484 54.4065 13.4749C54.3334 13.7014 54.2093 13.9083 54.0438 14.0799C53.8785 14.2515 53.6761 14.3833 53.4519 14.4652C53.2278 14.5471 53.0409 14.5658 52.746 14.5658Z" fill="#191919"/>
@@ -1379,8 +1414,9 @@
                 </svg>
               </div>
               <button class="screen-close" aria-label="Close checkout">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 2L14 14M14 2L2 14" stroke="#544A5A" stroke-width="1.5" stroke-linecap="round"/>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.75 5.25L5.25 18.75" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  <path d="M18.75 18.75L5.25 5.25" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
                 </svg>
               </button>
             </div>
@@ -1453,10 +1489,7 @@
               <!-- 2. SimpleOrderSummary -->
               <div class="screen-order-summary">
                 <div class="screen-order-row">
-                  <div>
-                    <div class="screen-order-label">Order total</div>
-                    <div class="screen-order-merchant">Acme Co.</div>
-                  </div>
+                  <div class="screen-order-label">Order total</div>
                   <div style="display:flex;align-items:center;gap:8px;">
                     <span class="screen-order-amount">$250.00</span>
                     <span class="chevron">▼</span>
@@ -1465,10 +1498,22 @@
               </div>
               <!-- 3. ExistingPaymentMethod -->
               <div class="screen-card-row">
-                <div class="card-visa-badge">VISA</div>
-                <div>
-                  <div class="card-details-primary">Visa ···· 4242</div>
-                  <div class="card-details-secondary">Expires 09/28</div>
+                <div class="screen-card-inner">
+                  <div class="card-brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                      <path fill="#2100c4" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"/>
+                      <path fill="#fff" d="M15.186,19l-2.626,7.832c0,0-0.667-3.313-0.733-3.729c-1.495-3.411-3.701-3.221-3.701-3.221L10.726,30v-0.002h3.161L18.258,19H15.186z M17.689,30h2.871l1.736-11h-2.907L17.689,30z M38.008,19h-3.021l-4.71,11h2.852l0.588-1.571h3.596L37.619,30h2.613L38.008,19z M34.513,26.328l1.563-4.157l0.818,4.157H34.513z M26.369,22.206c0-0.606,0.498-1.057,1.926-1.057c0.928,0,1.991,0.674,1.991,0.674l0.466-2.309c0,0-1.358-0.515-2.691-0.515c-3.019,0-4.576,1.444-4.576,3.272c0,3.306,3.979,2.853,3.979,4.551c0,0.291-0.231,0.964-1.888,0.964c-1.662,0-2.759-0.609-2.759-0.609l-0.495,2.216c0,0,1.063,0.606,3.117,0.606c2.059,0,4.915-1.54,4.915-3.752C30.354,23.586,26.369,23.394,26.369,22.206z"/>
+                      <path fill="#f5bc00" d="M12.212,24.945l-0.966-4.748c0,0-0.437-1.029-1.573-1.029s-4.44,0-4.44,0S10.894,20.84,12.212,24.945z"/>
+                    </svg>
+                  </div>
+                  <span class="card-brand-name">Visa</span>
+                  <span class="card-brand-type">debit</span>
+                  <span class="card-brand-digits">•••• 4242</span>
+                </div>
+                <div class="card-arrow">
+                  <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2L7 7L2 12" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  </svg>
                 </div>
               </div>
               <!-- 4. DynamicTila — matches real DynamicTila component structure -->
@@ -1662,7 +1707,7 @@
           <div class="mobile-frame-full">
             <div class="screen-header">
               <div class="screen-logo-wrap">
-                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo">
+                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo" style="margin-left: -7px; margin-top: -7px;">
                   <path d="M1.81635 17.5474L2.32973 21.7154H20.3506L19.7627 16.9439H11.3731L11.2985 16.3535L19.0385 10.9785L18.5208 6.80615H0.5L1.08797 11.5776H9.50823L9.58283 12.1724L1.81635 17.5474Z" fill="#191919"/>
                   <path d="M20.6201 6.80615L22.463 21.7154H40.4969L38.676 6.80615H20.6201Z" fill="#AA8FFF"/>
                   <path d="M59.4112 12.1866C58.9722 8.83656 56.3396 6.80726 52.7415 6.82038H40.7451L42.5881 21.7297H47.9852L47.6166 18.7469H53.3207C57.8228 18.7469 59.8806 15.9522 59.4112 12.1866ZM52.746 14.5658H47.1032L46.6644 10.9883H52.3378C53.6542 10.9883 54.3563 11.7493 54.466 12.7727C54.4999 13.0082 54.4796 13.2484 54.4065 13.4749C54.3334 13.7014 54.2093 13.9083 54.0438 14.0799C53.8785 14.2515 53.6761 14.3833 53.4519 14.4652C53.2278 14.5471 53.0409 14.5658 52.746 14.5658Z" fill="#191919"/>
@@ -1670,8 +1715,9 @@
                 </svg>
               </div>
               <button class="screen-close" aria-label="Close checkout">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 2L14 14M14 2L2 14" stroke="#544A5A" stroke-width="1.5" stroke-linecap="round"/>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.75 5.25L5.25 18.75" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  <path d="M18.75 18.75L5.25 5.25" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
                 </svg>
               </button>
             </div>
@@ -1744,10 +1790,7 @@
               <!-- 2. SimpleOrderSummary -->
               <div class="screen-order-summary">
                 <div class="screen-order-row">
-                  <div>
-                    <div class="screen-order-label">Order total</div>
-                    <div class="screen-order-merchant">Acme Co.</div>
-                  </div>
+                  <div class="screen-order-label">Order total</div>
                   <div style="display:flex;align-items:center;gap:8px;">
                     <span class="screen-order-amount">$250.00</span>
                     <span class="chevron">▼</span>
@@ -1756,10 +1799,22 @@
               </div>
               <!-- 3. ExistingPaymentMethod -->
               <div class="screen-card-row">
-                <div class="card-visa-badge">VISA</div>
-                <div>
-                  <div class="card-details-primary">Visa ···· 4242</div>
-                  <div class="card-details-secondary">Expires 09/28</div>
+                <div class="screen-card-inner">
+                  <div class="card-brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                      <path fill="#2100c4" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"/>
+                      <path fill="#fff" d="M15.186,19l-2.626,7.832c0,0-0.667-3.313-0.733-3.729c-1.495-3.411-3.701-3.221-3.701-3.221L10.726,30v-0.002h3.161L18.258,19H15.186z M17.689,30h2.871l1.736-11h-2.907L17.689,30z M38.008,19h-3.021l-4.71,11h2.852l0.588-1.571h3.596L37.619,30h2.613L38.008,19z M34.513,26.328l1.563-4.157l0.818,4.157H34.513z M26.369,22.206c0-0.606,0.498-1.057,1.926-1.057c0.928,0,1.991,0.674,1.991,0.674l0.466-2.309c0,0-1.358-0.515-2.691-0.515c-3.019,0-4.576,1.444-4.576,3.272c0,3.306,3.979,2.853,3.979,4.551c0,0.291-0.231,0.964-1.888,0.964c-1.662,0-2.759-0.609-2.759-0.609l-0.495,2.216c0,0,1.063,0.606,3.117,0.606c2.059,0,4.915-1.54,4.915-3.752C30.354,23.586,26.369,23.394,26.369,22.206z"/>
+                      <path fill="#f5bc00" d="M12.212,24.945l-0.966-4.748c0,0-0.437-1.029-1.573-1.029s-4.44,0-4.44,0S10.894,20.84,12.212,24.945z"/>
+                    </svg>
+                  </div>
+                  <span class="card-brand-name">Visa</span>
+                  <span class="card-brand-type">debit</span>
+                  <span class="card-brand-digits">•••• 4242</span>
+                </div>
+                <div class="card-arrow">
+                  <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2L7 7L2 12" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  </svg>
                 </div>
               </div>
               <!-- 4. DynamicTila — matches real DynamicTila component structure -->
@@ -2002,7 +2057,7 @@
           <div class="mobile-frame-full">
             <div class="screen-header">
               <div class="screen-logo-wrap">
-                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo">
+                <svg width="65" height="22" viewBox="0 0 65 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Zip Logo" style="margin-left: -7px; margin-top: -7px;">
                   <path d="M1.81635 17.5474L2.32973 21.7154H20.3506L19.7627 16.9439H11.3731L11.2985 16.3535L19.0385 10.9785L18.5208 6.80615H0.5L1.08797 11.5776H9.50823L9.58283 12.1724L1.81635 17.5474Z" fill="#191919"/>
                   <path d="M20.6201 6.80615L22.463 21.7154H40.4969L38.676 6.80615H20.6201Z" fill="#AA8FFF"/>
                   <path d="M59.4112 12.1866C58.9722 8.83656 56.3396 6.80726 52.7415 6.82038H40.7451L42.5881 21.7297H47.9852L47.6166 18.7469H53.3207C57.8228 18.7469 59.8806 15.9522 59.4112 12.1866ZM52.746 14.5658H47.1032L46.6644 10.9883H52.3378C53.6542 10.9883 54.3563 11.7493 54.466 12.7727C54.4999 13.0082 54.4796 13.2484 54.4065 13.4749C54.3334 13.7014 54.2093 13.9083 54.0438 14.0799C53.8785 14.2515 53.6761 14.3833 53.4519 14.4652C53.2278 14.5471 53.0409 14.5658 52.746 14.5658Z" fill="#191919"/>
@@ -2010,8 +2065,9 @@
                 </svg>
               </div>
               <button class="screen-close" aria-label="Close checkout">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 2L14 14M14 2L2 14" stroke="#544A5A" stroke-width="1.5" stroke-linecap="round"/>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.75 5.25L5.25 18.75" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  <path d="M18.75 18.75L5.25 5.25" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
                 </svg>
               </button>
             </div>
@@ -2095,10 +2151,7 @@
               <!-- 2. SimpleOrderSummary -->
               <div class="screen-order-summary">
                 <div class="screen-order-row">
-                  <div>
-                    <div class="screen-order-label">Order total</div>
-                    <div class="screen-order-merchant">Acme Co.</div>
-                  </div>
+                  <div class="screen-order-label">Order total</div>
                   <div style="display:flex;align-items:center;gap:8px;">
                     <span class="screen-order-amount">$250.00</span>
                     <span class="chevron">▼</span>
@@ -2107,10 +2160,22 @@
               </div>
               <!-- 3. ExistingPaymentMethod -->
               <div class="screen-card-row">
-                <div class="card-visa-badge">VISA</div>
-                <div>
-                  <div class="card-details-primary">Visa ···· 4242</div>
-                  <div class="card-details-secondary">Expires 09/28</div>
+                <div class="screen-card-inner">
+                  <div class="card-brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                      <path fill="#2100c4" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"/>
+                      <path fill="#fff" d="M15.186,19l-2.626,7.832c0,0-0.667-3.313-0.733-3.729c-1.495-3.411-3.701-3.221-3.701-3.221L10.726,30v-0.002h3.161L18.258,19H15.186z M17.689,30h2.871l1.736-11h-2.907L17.689,30z M38.008,19h-3.021l-4.71,11h2.852l0.588-1.571h3.596L37.619,30h2.613L38.008,19z M34.513,26.328l1.563-4.157l0.818,4.157H34.513z M26.369,22.206c0-0.606,0.498-1.057,1.926-1.057c0.928,0,1.991,0.674,1.991,0.674l0.466-2.309c0,0-1.358-0.515-2.691-0.515c-3.019,0-4.576,1.444-4.576,3.272c0,3.306,3.979,2.853,3.979,4.551c0,0.291-0.231,0.964-1.888,0.964c-1.662,0-2.759-0.609-2.759-0.609l-0.495,2.216c0,0,1.063,0.606,3.117,0.606c2.059,0,4.915-1.54,4.915-3.752C30.354,23.586,26.369,23.394,26.369,22.206z"/>
+                      <path fill="#f5bc00" d="M12.212,24.945l-0.966-4.748c0,0-0.437-1.029-1.573-1.029s-4.44,0-4.44,0S10.894,20.84,12.212,24.945z"/>
+                    </svg>
+                  </div>
+                  <span class="card-brand-name">Visa</span>
+                  <span class="card-brand-type">debit</span>
+                  <span class="card-brand-digits">•••• 4242</span>
+                </div>
+                <div class="card-arrow">
+                  <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2L7 7L2 12" stroke="#1A0826" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                  </svg>
                 </div>
               </div>
               <!-- 4. DynamicTila — matches real DynamicTila component structure -->

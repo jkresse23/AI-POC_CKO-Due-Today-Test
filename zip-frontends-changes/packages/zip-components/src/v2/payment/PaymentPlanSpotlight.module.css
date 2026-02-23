@@ -1,0 +1,71 @@
+.container {
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.amount {
+  display: flex;
+  margin-top: 8px;
+
+  .dollarSign {
+    margin-right: 2px;
+  }
+  
+  .number {
+    font-size: 24px;
+  }
+}
+
+.amountSection {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.oldAmount {
+  color: var(--grey600);
+  text-decoration: line-through;
+  margin-right: 4px;
+}
+
+.newAmount {
+  margin-left: 1px;
+  color: var(--fearlessness-medium);
+}
+
+.vfiBanner {
+  margin-top: 8px;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #f2ffc9;
+  font-family: var(--sharpGroteskBook);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #1a0826;
+}
+
+/* Variation B — Due Today Hero */
+.dueTodayBadge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 100px;
+  background-color: var(--fearlessness-medium);
+  color: #ffffff;
+  font-family: var(--sharpGroteskSemiBold);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.dueTodayHeroAmount {
+  font-family: var(--sharpGroteskBook);
+  font-size: 44px;
+  font-weight: 400;
+  color: var(--fearlessness-medium);
+  line-height: 1;
+  margin-bottom: 6px;
+}
